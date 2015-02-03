@@ -1,0 +1,40 @@
+extends base
+// === stylesheets block ===
+// === End stylesheets block ===
+
+
+// === Content block ===
+
+block content
+
+  .container(ng-app="test")
+    .row(ng-controller="TestController")
+      .col-md-12
+        .row
+          .col-md-12.text-center
+            h2 StreamJunction Primer
+        .row
+          .col-md-12
+            form(role="form", name="sourceForm")
+              div.form-group
+                label(for="fileInput") Text
+                input#fileInput(type="file", ng-file-select="onFileSelect($files)")
+                p.help-block Provide the file with words to count              
+                .alert.alert-success(ng-show="uploadCompleted") Upload complete
+                .alert.alert-info(ng-show="showProgress") Upload progress: {{progress}}%
+                .alert.alert-danger(ng-show="uploadFailure") Error during upload
+        hr
+        .row
+          .col-md-12
+            form(role="form", name="resultForm", ng-submit="getWordCount()")
+              div.form-group
+                label(for="wordsInput") Words
+                input#wordsInput.form-control(type="text", ng-model="words")                
+                p.help-block Enter the words you want to get the aggregate count for
+                .alert.alert-success(ng-show="showWordCount") {{wordsToCount}}: {{wordCount}}
+                .alert.alert-danger(ng-show="wordCountError") Cannot count the words!
+              button.btn.btn-default(type="submit") Get Count!
+            
+// === Scripts Block ===
+block scripts
+    script(src="/static/js/test.js")
