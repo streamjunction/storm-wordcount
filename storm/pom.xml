@@ -29,11 +29,11 @@
     </repository>
     <repository>
       <id>release.streamjunction.com</id>
-      <url>http://repo.streamjunction.com/release</url>
+      <url>s3://repo.maven.streamjunction/release</url>
     </repository>
     <repository>
       <id>snapshot.streamjunction.com</id>
-      <url>http://repo.streamjunction.com/snapshot</url>
+      <url>s3://repo.maven.streamjunction/snapshot</url>
     </repository>
   </repositories>
 
@@ -64,6 +64,13 @@
   </dependencies>
   
   <build>    
+    <extensions>  
+      <extension>  
+        <groupId>org.springframework.build.aws</groupId>  
+        <artifactId>org.springframework.build.aws.maven</artifactId>  
+        <version>3.0.0.RELEASE</version>  
+      </extension>
+    </extensions>
     <finalName>storm</finalName>
     <resources>
       <resource>
